@@ -44,16 +44,16 @@ resource "aws_security_group" "security_group_payment_app" {
     protocol         = "tcp"
        cidr_blocks      = ["${aws_eip.example.public_ip}/32"]
   }
-}
- egress {
+
+   egress {
     from_port        = var.splunk
     to_port          = var.splunk
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
   }
-
-
+}
 
 resource "aws_eip" "example" {
-   domain = "vpc"
+  #  domain = "vpc"
+  vpc = true
 }
